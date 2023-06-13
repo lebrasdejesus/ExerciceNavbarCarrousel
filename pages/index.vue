@@ -1,60 +1,98 @@
 <template>
   <div class="flex-column">
-    <div class="flex flex-row max-h-24 h-24 z-10 font-bold">
-      <div class="flex flex-row basis-1/2 items-center">
-        <div class="max-w-fit	ml-16 max-w-xs text-center">
-          <img src="@/assets/images/logo_suzuki_horizontal_color.c4d2cbf.svg" alt="Logo Suzuki" class="h-24"></div>
+    <!-- navbar -->
+    <div class="flex flex-row place-content-between max-h-20 h-20 z-10 font-bold">
+      <!-- partie logo + nom concession -->
+      <div class="flex flex-row justify-start basis-2/6 items-center">
+        <div class="max-w-fit	md:ml-16 ml-2 text-center">
+          <img src="@/assets/images/logo_suzuki_horizontal_color.c4d2cbf.svg" alt="Logo Suzuki" class="h-20 md:h-24">
+        </div>
         <div class="flex w-48 my-4 mx-4">
           <span class="text-lg uppercase">{{ dataFromAPi.nameSeller }}</span>
         </div>
       </div>
-
-      <div class="flex flex-row justify-end items-center basis-1/2 flex-wrap z-10">
-        <div class="px-3 text-sm h-full">
+      <!-- partie menu -->
+      <div class="flex flex-row justify-end flex-wrap mr-8 z-10">
+        <div class="px-3 text-xs h-full">
           <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
             <div>Véhicules neufs</div>
           </div>
         </div>
-        <div class="px-3 text-sm h-full">
+        <div class="px-3 text-xs h-full">
           <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
             <div>Occasions</div>
           </div>
         </div>
-        <div class="px-3 text-sm h-full">
+        <!-- menu service apres vente -->
+        <div class="px-3 text-xs h-full">
           <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
             <div>Service après-vente</div>
           </div>
         </div>
-        <div class="px-3 text-sm h-full">
+        <!-- conteneur global sous menu service apres vente -->
+        <!-- <div class="hidden"> -->
+        <div class="flex flex-row position-absolue min-w-full bg-slate-700">
+          <!-- conteneur du 1er bloc de gauche -->
+          <div class="flex flex-col">
+            <div class="flex flex-row"><span class="text-xl">Après-vente</span></div>
+            <div class="flex flex-row"><span>Atelier mécanique</span></div>
+            <div class="flex flex-row"><span>Carosserie et pare-brise</span></div>
+            <div class="flex flex-row"><span>Prendre rendez-vous en atelier</span></div>
+            <div class="flex flex-row"><span>Offre après-vente</span></div>
+          </div>
+        </div>
+
+        <div class="px-3 text-xs h-full">
           <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
             <div>Offres et actualités</div>
           </div>
         </div>
-        <div class="px-3 text-sm h-full">
+        <div class="px-3 text-xs h-full">
           <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
             <div>La concession</div>
+          </div>
         </div>
-      </div>
 
       </div>
     </div>
 
-
+    <!-- caroussel -->
     <div>
-    <ssr-carousel show-dots loop class="z-0">
-      <div class="slide h-96 bg-orange-500 relative" v-for='slide in sliders' :key='slide.id' > 
-        <div class=" h-96 bg-gradient-to-r from-blue-500 absolute"></div> 
-        <div><img class="object-none" :src="slide.images.filter(x => x.tag === 'desktop')[0]['@id']"/></div>
-        
-      </div>
-      <!-- <div class="slide h-96 bg-orange-500">{{ sliders.images }}</div> -->
-      <!-- <div class="slide h-96 bg-orange-500 style="background: (v-for="image in slide.images" :src="image['@id']" :key="image['@id']" )"></div> -->
-    </ssr-carousel>
+      <ssr-carousel show-dots loop class="z-0">
+        <div class="slide object-cover bg-orange-500 relative" v-for='slide in sliders' :key='slide.id'>
+          <div class="grid content-center p-8 bg-gradient-to-r from-neutral-500 absolute inset-0 w-2/5">
+            <!-- texte slider -->
+            <div class="text-lg lg:text-3xl uppercase w-10/12 md:w-full">
+              <span class="text-white font-bold">Profitez des jours simplissimes chez Suzuki !</span>
+            </div>
+            <!-- boutons slider-->
+            <div class="grid grid-cols-2 w-full max-h-16 md:gap-6 mt-6 sm:mt-4">
+              <div class="w-full">
+                <div
+                  class="flex flex-row justify-center	cursor-pointer transition duration-300 ease-in-out rounded-md w-full bg-white hover:bg-zinc-200 text-black">
+                  <span class="text-xs lg:text-base font-semibold py-4">Réserver un essai</span>
+                </div>
+              </div>
+              <div class="w-full">
+                <div
+                  class="flex flex-row justify-center	cursor-pointer transition duration-300 ease-in-out rounded-md w-full bg-blue-800 hover:bg-blue-900 text-white">
+                  <span class="text-xs lg:text-base font-semibold py-4">Voir l'offre</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <!-- <span class="now">Current Page: {{ page + 1 }}</span>
+          <div><img :src="slide.images.filter(x => x.tag === 'desktop')[0]['@id']" /></div>
+
+        </div>
+        <!-- <div class="slide h-96 bg-orange-500">{{ sliders.images }}</div> -->
+        <!-- <div class="slide h-96 bg-orange-500 style="background: (v-for="image in slide.images" :src="image['@id']" :key="image['@id']" )"></div> -->
+      </ssr-carousel>
+
+      <!-- <span class="now">Current Page: {{ page + 1 }}</span>
     <button @click='page--'>Back</button>
     <button @click='page++'>Next</button> -->
-  </div>
+    </div>
 
   </div>
 </template>
@@ -67,7 +105,7 @@ export default {
     return {
       dataFromAPi: [],
       sliders: [],
-      slidersDesktop: []
+      // slidersDesktop: []
       // page: 0
     }
   },
@@ -80,3 +118,9 @@ export default {
   }
 }
 </script>
+
+<!-- <style scoped>
+  .ht{
+    height: fit-content;
+  }
+</style> -->
