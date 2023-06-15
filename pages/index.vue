@@ -1,64 +1,122 @@
 <template>
   <div class="flex-column">
-    <!-- navbar -->
-    <div class="flex flex-row place-content-between max-h-20 h-20 z-10 font-bold">
-      <!-- partie logo + nom concession -->
-      <div class="flex flex-row justify-start basis-2/6 items-center">
-        <div class="max-w-fit	md:ml-16 ml-2 text-center">
-          <img src="@/assets/images/logo_suzuki_horizontal_color.c4d2cbf.svg" alt="Logo Suzuki" class="h-20 md:h-24">
+    <!-- navbar menu et sous menu-->
+    <div class="z-10 relative ">
+      <!-- menu blanc -->
+      <div class="flex flex-row place-content-between max-h-20 h-20 z-10 font-bold bg-white">
+        <!-- partie logo + nom concession -->
+        <div class="flex flex-row justify-start basis-2/6 items-center">
+          <div class="max-w-fit	md:ml-16 ml-2 text-center">
+            <img src="@/assets/images/logo_suzuki_horizontal_color.c4d2cbf.svg" alt="Logo Suzuki" class="h-20 md:h-24">
+          </div>
+          <div class="flex w-48 my-4 mx-4">
+            <span class="text-lg uppercase">{{ dataFromAPi.nameSeller }}</span>
+          </div>
         </div>
-        <div class="flex w-48 my-4 mx-4">
-          <span class="text-lg uppercase">{{ dataFromAPi.nameSeller }}</span>
+        <!-- partie menu -->
+        <div class="flex flex-row justify-end flex-wrap mr-8 z-10">
+          <div class="px-3 text-xs h-full">
+            <div
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
+              <div>Véhicules neufs</div>
+            </div>
+          </div>
+          <div class="px-3 text-xs h-full">
+            <div
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
+              <div>Occasions</div>
+            </div>
+          </div>
+          <!-- menu service apres vente -->
+          <div class="px-3 text-xs h-full" @mouseover="sousMenu = 1" @mouseleave="sousMenu = 0">
+            <div
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
+              <div>Service après-vente</div>
+            </div>
+          </div>
+
+          <div class="px-3 text-xs h-full" @mouseover="sousMenu = 2" @mouseleave="sousMenu = 0">
+            <div
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
+              <div>Offres et actualités</div>
+            </div>
+          </div>
+          <div class="px-3 text-xs h-full" @mouseover="sousMenu = 3" @mouseleave="sousMenu = 0">
+            <div
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
+              <div>La concession</div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <!-- partie menu -->
-      <div class="flex flex-row justify-end flex-wrap mr-8 z-10">
-        <div class="px-3 text-xs h-full">
-          <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
-            <div>Véhicules neufs</div>
-          </div>
-        </div>
-        <div class="px-3 text-xs h-full">
-          <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
-            <div>Occasions</div>
-          </div>
-        </div>
-        <!-- menu service apres vente -->
-        <div class="px-3 text-xs h-full">
-          <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
-            <div>Service après-vente</div>
-          </div>
-        </div>
-        <!-- conteneur global sous menu service apres vente -->
-        <!-- <div class="hidden"> -->
-        <div class="flex flex-row position-absolue min-w-full bg-slate-700">
-          <!-- conteneur du 1er bloc de gauche -->
-          <div class="flex flex-col">
-            <div class="flex flex-row"><span class="text-xl">Après-vente</span></div>
-            <div class="flex flex-row"><span>Atelier mécanique</span></div>
-            <div class="flex flex-row"><span>Carosserie et pare-brise</span></div>
-            <div class="flex flex-row"><span>Prendre rendez-vous en atelier</span></div>
-            <div class="flex flex-row"><span>Offre après-vente</span></div>
-          </div>
-        </div>
 
-        <div class="px-3 text-xs h-full">
-          <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
-            <div>Offres et actualités</div>
-          </div>
+      <!-- conteneur global sous menu service apres vente -->
+      <div class="flex flex-row w-full bg-white absolute" v-bind:class="[sousMenu === 1 ? '' : 'hidden']"
+        @mouseover="sousMenu = 1" @mouseleave="sousMenu = 0">
+        <!-- conteneur du 1er bloc de gauche -->
+        <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
+          <div class="flex flex-row py-2"><span class="text-2xl">Après-vente</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Atelier mécanique</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Carosserie et pare-brise</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Prendre rendez-vous en atelier</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Offre après-vente</span></div>
         </div>
-        <div class="px-3 text-xs h-full">
-          <div class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950">
-            <div>La concession</div>
-          </div>
+        <!-- conteneur du 2eme bloc milieu -->
+        <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
+          <div class="flex flex-row py-2"><span class="text-2xl">Garanties et assistance</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Garantie et assistance Suzuki</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Contrat d'entretien et extension de garantie</span></div>
         </div>
-
+        <!-- conteneur du 2eme bloc milieu -->
+        <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
+          <div class="flex flex-row py-2"><span class="text-2xl">Accessoires</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Tous les accessoires</span></div>
+        </div>
       </div>
+
+      <!-- conteneur global sous menu offre et actualité -->
+      <div class="flex flex-row w-full bg-white absolute" v-bind:class="[sousMenu === 2 ? '' : 'hidden']"
+        @mouseover="sousMenu = 2" @mouseleave="sousMenu = 0">
+        <!-- conteneur du 1er bloc de gauche -->
+        <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
+          <div class="flex flex-row py-2"><span class="text-2xl">Nos offres</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Atelier mécanique</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Carosserie et pare-brise</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Prendre rendez-vous en atelier</span></div>
+        </div>
+        <!-- conteneur du 2eme bloc milieu -->
+        <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
+          <div class="flex flex-row py-2"><span class="text-2xl">Notre actualité</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Garantie et assistance Suzuki</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Contrat d'entretien et extension de garantie</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Offre après-vente</span></div>
+        </div>
+      </div>
+
+      <!-- conteneur global sous menu la concession -->
+      <div class="flex flex-row w-full bg-white absolute" v-bind:class="[sousMenu === 3 ? '' : 'hidden']"
+        @mouseover="sousMenu = 3" @mouseleave="sousMenu = 0">
+        <!-- conteneur du 1er bloc de gauche -->
+        <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
+          <div class="flex flex-row py-2"><span class="text-2xl">Contact & acces</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Atelier mécanique</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Carosserie et pare-brise</span></div>
+        </div>
+        <!-- conteneur du 2eme bloc milieu -->
+        <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
+          <div class="flex flex-row py-2"><span class="text-2xl">Qui sommes nous ?</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Garantie et assistance Suzuki</span></div>
+          <div class="flex flex-row py-2"><span class="text-xs">Contrat d'entretien et extension de garantie</span></div>
+        </div>
+      </div>
+
     </div>
+
 
     <!-- caroussel -->
     <div>
-      <ssr-carousel show-dots loop class="z-0">
+      <ssr-carousel loop class="z-0">
         <div class="slide object-cover bg-orange-500 relative" v-for='slide in sliders' :key='slide.id'>
           <div class="grid content-center p-8 bg-gradient-to-r from-neutral-500 absolute inset-0 w-2/5">
             <!-- texte slider -->
@@ -105,10 +163,12 @@ export default {
     return {
       dataFromAPi: [],
       sliders: [],
+      sousMenu: 0,
       // slidersDesktop: []
       // page: 0
     }
   },
+
 
   async fetch() {
     const { data: fromAPi } = await this.$axios.get('https://dps-api-site-ce.herokuapp.com/locations?slug=la-rochelle')
@@ -119,8 +179,8 @@ export default {
 }
 </script>
 
-<!-- <style scoped>
-  .ht{
-    height: fit-content;
-  }
-</style> -->
+<style scoped>
+.cache {
+  display: none;
+}
+</style>
