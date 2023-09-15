@@ -254,7 +254,7 @@
     <button @click='page--'>Back</button>
     <button @click='page++'>Next</button> -->
     </div>
-    <div>Bonjour</div>
+    <div class="text-slate-100">Bonjour...</div>
   </div>
 </template>
 
