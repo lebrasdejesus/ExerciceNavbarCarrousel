@@ -23,14 +23,14 @@
         <div class="flex flex-row justify-end flex-wrap mr-8 z-10">
           <div class="px-3 text-xs h-full">
             <div
-              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950"
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-blue-900 cursor-pointer"
             >
               <div>Véhicules neufs</div>
             </div>
           </div>
           <div class="px-3 text-xs h-full">
             <div
-              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950"
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-blue-900 cursor-pointer"
             >
               <div>Occasions</div>
             </div>
@@ -42,7 +42,7 @@
             @mouseleave="sousMenu = 0"
           >
             <div
-              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950"
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-blue-900 cursor-pointer"
             >
               <div>Service après-vente</div>
             </div>
@@ -54,7 +54,7 @@
             @mouseleave="sousMenu = 0"
           >
             <div
-              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950"
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-blue-900 cursor-pointer"
             >
               <div>Offres et actualités</div>
             </div>
@@ -65,7 +65,7 @@
             @mouseleave="sousMenu = 0"
           >
             <div
-              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-indigo-950"
+              class="flex h-full items-center border-b-4 border-spacing-y-12 border-transparent hover:border-blue-900 cursor-pointer"
             >
               <div>La concession</div>
             </div>
@@ -86,16 +86,24 @@
             <span class="text-2xl">Après-vente</span>
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Atelier mécanique</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Atelier mécanique</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Carosserie et pare-brise</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Carosserie et pare-brise</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Prendre rendez-vous en atelier</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Prendre rendez-vous en atelier</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Offre après-vente</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Offre après-vente</span
+            >
           </div>
         </div>
         <!-- conteneur du 2eme bloc milieu -->
@@ -104,10 +112,12 @@
             <span class="text-2xl">Garanties et assistance</span>
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Garantie et assistance Suzuki</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Garantie et assistance Suzuki</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs"
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
               >Contrat d'entretien et extension de garantie</span
             >
           </div>
@@ -118,7 +128,9 @@
             <span class="text-2xl">Accessoires</span>
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Tous les accessoires</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Tous les accessoires</span
+            >
           </div>
         </div>
       </div>
@@ -136,13 +148,19 @@
             <span class="text-2xl">Nos offres</span>
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Atelier mécanique</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Atelier mécanique</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Carosserie et pare-brise</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Carosserie et pare-brise</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Prendre rendez-vous en atelier</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Prendre rendez-vous en atelier</span
+            >
           </div>
         </div>
         <!-- conteneur du 2eme bloc milieu -->
@@ -151,15 +169,19 @@
             <span class="text-2xl">Notre actualité</span>
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Garantie et assistance Suzuki</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Garantie et assistance Suzuki</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs"
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
               >Contrat d'entretien et extension de garantie</span
             >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Offre après-vente</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Offre après-vente</span
+            >
           </div>
         </div>
       </div>
@@ -174,25 +196,31 @@
         <!-- conteneur du 1er bloc de gauche -->
         <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
           <div class="flex flex-row py-2">
-            <span class="text-2xl">Contact & acces</span>
+            <span class="text-2xl">Contact & accès</span>
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Atelier mécanique</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Atelier mécanique</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Carosserie et pare-brise</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Carosserie et pare-brise</span
+            >
           </div>
         </div>
         <!-- conteneur du 2eme bloc milieu -->
         <div class="flex flex-col py-12 md:pl-16 pl-2 font-bold">
           <div class="flex flex-row py-2">
-            <span class="text-2xl">Qui sommes nous ?</span>
+            <span class="text-2xl">Qui sommes-nous ?</span>
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs">Garantie et assistance Suzuki</span>
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
+              >Garantie et assistance Suzuki</span
+            >
           </div>
           <div class="flex flex-row py-2">
-            <span class="text-xs"
+            <span class="text-xs hover:text-blue-900 cursor-pointer"
               >Contrat d'entretien et extension de garantie</span
             >
           </div>
@@ -204,7 +232,7 @@
     <div>
       <ssr-carousel loop class="z-0">
         <div
-          class="slide object-cover bg-orange-500 relative"
+          class="slide object-cover bg-yellow-100 relative"
           v-for="slide in sliders"
           :key="slide.id"
         >
@@ -254,7 +282,6 @@
     <button @click='page--'>Back</button>
     <button @click='page++'>Next</button> -->
     </div>
-    <div class="text-slate-100">Bonjour...</div>
   </div>
 </template>
 
